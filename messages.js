@@ -22,16 +22,18 @@ $("#submitmsg").click(() => {
 	chat.innerHTML += message(
 		"someever for now", 
 		new Date().toString(), 
-		$("usermsg").val(),
+		$("#usermsg").val(),
 		id
 	);
 
-	let messageElement = elem(id);
+	let messageElement = $("#" + id)[0];
 
 	for(var i = 1; i <= msgCount; i++) {
-		let element = elem("msg" + i);
+		let element = $("#msg" + i)[0];
 		element.style = "";
 	}
 
 	messageElement.style = "animation: message-enter 1s";
+
+	return false;
 });
