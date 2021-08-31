@@ -36,20 +36,7 @@ session_start();
             </div>
             <div id="chat-area">
                 <div id="chat">
-                    <div class="message glass">
-                        <div class="flex">
-                            <img src="./null.png" class="avatar">
-                            <div class="flex">
-                                <div class="flex-down">
-                                    <div class="username">someever</div>
-                                    <div class="msgln">
-                                        hello world
-                                    </div>
-                                </div>
-                                <div class="timestamp">today at 3:00 AM</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- initially empty -->
                 </div>
                 <div id="message-box" class="glass">
                         <div class="message-input">
