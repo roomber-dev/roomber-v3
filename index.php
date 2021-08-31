@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="messages.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -51,7 +60,7 @@
             </div>
         </div>
     </div>
-    <script src="messages.js"></script>
+    
 </body>
 
 </html>
