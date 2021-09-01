@@ -1,4 +1,10 @@
-let message = (username, timestamp, text, id) => {
+let message = (username, date, text, id) => {
+	
+	var day = date.getDate().toString().padStart(2, "0");
+	var mon = date.getMonth().toString().padStart(2, "0");
+	var yer = date.getFullYear();
+
+	var timestamp = `${day}/${mon}/${yer}`;
 	return `<div class="message glass" id="${id}">
 		<div class="flex">
 		    <img src="assets/null.png" class="avatar">
@@ -21,7 +27,7 @@ $("#submitmsg").click(() => {
 	let id = "msg" + (msgCount += 1)
 	chat.innerHTML += message(
 		"someever for now", 
-		new Date().toString(), 
+		new Date(), 
 		$("#usermsg").val(),
 		id
 	);
@@ -37,3 +43,6 @@ $("#submitmsg").click(() => {
 
 	return false;
 });
+
+
+
