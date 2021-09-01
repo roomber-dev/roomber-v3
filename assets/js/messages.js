@@ -38,6 +38,10 @@ function findWithAttr(array, attr, value) {
     return -1;
 }
 
+function filterStringHTML(text) {
+	text = text.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&#34;").replace(/\\/g, "&#92;")
+}
+
 let message = (username, date = new Date(), text, id, status) => {
 
 
