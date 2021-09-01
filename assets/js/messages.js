@@ -13,20 +13,20 @@ function sendMessage(username, date = new Date(), text, id) {
 	updateChat();
 	$.post("post.php", {
 		text: text
-	}/*, function(data,status) {
+	}, function(data,status) {
 		if(data == "1") {
 			messages[findWithAttr(messages, "id", id)].status = 1
 		} else if((data != "1") || status != "success") {
 			messages[findWithAttr(messages, "id", id)].status = -1
 		}
 		updateChat();
-	}*/).done(function() {
+	})/*.done(function() {
     // Only on success (HTTP status code < 400)
     messages[findWithAttr(messages, "id", id)].status = 1
 }).fail(function() {
     // Only on errors (HTTP status code >= 400)
 	messages[findWithAttr(messages, "id", id)].status = -1
-})
+})*/
 }
 
 function findWithAttr(array, attr, value) {
