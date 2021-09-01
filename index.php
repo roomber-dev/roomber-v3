@@ -14,13 +14,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomber cutting-edge</title>
     <link rel="stylesheet" href="style.css">
-<<<<<<< HEAD
-    <script src="assets/js/messages.js"></script>
-=======
->>>>>>> 109737863bede68ce9f04b3069c34bc470b8c9c4
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!-- dont put <script src="messages.js"> here the script must be loaded after the 
-         html elements-->
+         html elements--> <!-- ok -->
 </head>
 
 <body>
