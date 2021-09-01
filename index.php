@@ -50,7 +50,7 @@ session_start();
         </div>
     </div>
 
-    <script src="messages.js"></script>
+    <script src="assets/js/messages.js"></script>
     
 </body>
 
