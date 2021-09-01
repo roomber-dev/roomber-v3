@@ -1,7 +1,7 @@
 let message = (username, timestamp, text, id) => {
 	return `<div class="message glass" id="${id}">
 		<div class="flex">
-		    <img src="./null.png" class="avatar">
+		    <img src="assets/null.png" class="avatar">
 		    <div class="flex">
 		        <div class="flex-down">
 		            <div class="username">${username}</div>
