@@ -57,6 +57,8 @@ var statusClass;
 		statusClass = "failed";
 	}
 
+	$("#usermsg").val("");
+
 	return `<div class="message glass" id="${id}">
 		<div class="flex">
 		    <img src="avatars/default.png" class="avatar">
@@ -134,7 +136,7 @@ function updateChat() {
 	
 
 
-	$("#chat").html(htmlstring);
+	$("#chat").html(htmlstring + "<br><br>");
 	if(!$("#"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
 
 

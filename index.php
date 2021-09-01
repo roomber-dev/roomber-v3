@@ -16,7 +16,8 @@ session_start();
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <!-- dont put <script src="messages.js"> here the script must be loaded after the 
-         html elements--> <!-- ok -->
+         html elements-->
+    <!-- ok -->
 </head>
 
 <body>
@@ -41,17 +42,21 @@ session_start();
 
                 </div>
                 <div id="message-box" class="glass">
-                        <div class="message-input">
+                <form>
+                    <div class="message-input">
+                        
                             <input name="usermsg" type="text" id="usermsg" placeholder="Message" autocomplete="off" />
                             <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-                        </div>
+                        
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="assets/js/messages.js"></script>
-    
+
 </body>
 
 </html>
