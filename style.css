@@ -227,10 +227,10 @@ body {
     opacity: 0.7;
 }
 
-.msgln .failed {
+.failed {
     color: red;
 }
 
-.msgln .sending {
+.sending {
     color: gray;
 }
