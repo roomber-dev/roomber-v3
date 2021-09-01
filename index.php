@@ -14,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomber cutting-edge</title>
     <link rel="stylesheet" href="style.css">
-    <script src="messages.js"></script>
+    <script src="assets/js/messages.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 </head>
 
@@ -38,7 +38,7 @@ session_start();
                 <div id="chat">
                     <div class="message glass">
                         <div class="flex">
-                            <img src="./null.png" class="avatar">
+                            <img src="assets/null.png" class="avatar">
                             <div class="flex">
                                 <div class="flex-down">
                                     <div class="username">someever</div>
