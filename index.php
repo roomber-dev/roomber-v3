@@ -22,8 +22,8 @@ session_start();
 <body>
     <div class="topbar-main flex-down">
         <div id="topbar" class="glass">
-            <div id="topbar-text">
-                top bar thing
+            <div id="topbar-content">
+                <img src="assets/roomber-logo.png" style="width: 60px; height: 60px;">
             </div>
         </div>
         <div class="flex">

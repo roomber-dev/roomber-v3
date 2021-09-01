@@ -84,7 +84,7 @@ body {
     white-space: nowrap;
 }
 
-#topbar-text {
+#topbar-content {
     margin: 10px;
 }
 
@@ -232,5 +232,5 @@ body {
 }
 
 .sending {
-    color: gray;
+    opacity: 50%;
 }

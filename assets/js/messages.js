@@ -7,9 +7,29 @@ function sendMessage(username, date = new Date(), text, id) {
 		text: text,
 		username: username,
 		id: id,
-		status: -1
+		status: 0
 	}
 	messages.push(json);
+	updateChat();
+	$.post("post.php", {
+		text: text
+	}, function(data) {
+		if(data == "1") {
+			messages[findWithAttr(messages, "id", id)].status = 1
+		} else {
+			messages[findWithAttr(messages, "id", id)].status = -1
+		}
+		updateChat();
+	})
+}
+
+function findWithAttr(array, attr, value) {
+    for(var i = 0; i < array.length; i += 1) {
+        if(array[i][attr] === value) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 let message = (username, date = new Date(), text, id, status) => {
@@ -23,11 +43,11 @@ let message = (username, date = new Date(), text, id, status) => {
 
 	var timestamp = `${day}/${mon}/${yer} at ${hour}:${min}`;
 var statusClass;
-	if(status = -1) {
+	if(status == -1) {
 		statusClass = "failed";
-	} else if(status = 0) {
+	} else if(status == 0) {
 		statusClass = "sending";
-	} else if(status = 1) {
+	} else if(status == 1) {
 		statusClass = "";
 	}
 
@@ -72,7 +92,6 @@ $("#submitmsg").click(() => {
 		id
 	)
 
-	updateChat();
 
 
 
@@ -110,7 +129,11 @@ function updateChat() {
 
 
 	$("#chat").html(htmlstring);
+	if(!$("#"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
+
+
 	$("#"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
+	}
 
 	for (var i = 1; i <= msgCount; i++) {
 		let element = $("#msg" + i);
