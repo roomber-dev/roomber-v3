@@ -1,13 +1,16 @@
-let message = (username, date, text, id) => {
+let message = (username, date = new Date(), text, id) => {
+
 	
 	var day = date.getDate().toString().padStart(2, "0");
 	var mon = date.getMonth().toString().padStart(2, "0");
 	var yer = date.getFullYear();
+	var hour = date.getHours().toString().padStart(2, "0");
+	var min = date.getMinutes().toString().padStart(2, "0");
 
-	var timestamp = `${day}/${mon}/${yer}`;
+	var timestamp = `${day}/${mon}/${yer} at ${hour}:${min}`;
 	return `<div class="message glass" id="${id}">
 		<div class="flex">
-		    <img src="assets/null.png" class="avatar">
+		    <img src="avatars/default.png" class="avatar">
 		    <div class="flex">
 		        <div class="flex-down">
 		            <div class="username">${username}</div>
