@@ -14,8 +14,13 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomber cutting-edge</title>
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
     <script src="assets/js/messages.js"></script>
+=======
+>>>>>>> 109737863bede68ce9f04b3069c34bc470b8c9c4
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <!-- dont put <script src="messages.js"> here the script must be loaded after the 
+         html elements-->
 </head>
 
 <body>
@@ -36,20 +41,8 @@ session_start();
             </div>
             <div id="chat-area">
                 <div id="chat">
-                    <div class="message glass">
-                        <div class="flex">
-                            <img src="assets/null.png" class="avatar">
-                            <div class="flex">
-                                <div class="flex-down">
-                                    <div class="username">someever</div>
-                                    <div class="msgln">
-                                        hello world
-                                    </div>
-                                </div>
-                                <div class="timestamp">today at 3:00 AM</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- initially empty -->
+
                 </div>
                 <div id="message-box" class="glass">
                         <div class="message-input">
@@ -60,6 +53,8 @@ session_start();
             </div>
         </div>
     </div>
+
+    <script src="messages.js"></script>
     
 </body>
 
