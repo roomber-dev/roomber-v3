@@ -13,14 +13,20 @@ function sendMessage(username, date = new Date(), text, id) {
 	updateChat();
 	$.post("post.php", {
 		text: text
-	}, function(data) {
+	}/*, function(data,status) {
 		if(data == "1") {
 			messages[findWithAttr(messages, "id", id)].status = 1
-		} else {
+		} else if((data != "1") || status != "success") {
 			messages[findWithAttr(messages, "id", id)].status = -1
 		}
 		updateChat();
-	})
+	}*/).done(function() {
+    // Only on success (HTTP status code < 400)
+    messages[findWithAttr(messages, "id", id)].status = 1
+}).fail(function() {
+    // Only on errors (HTTP status code >= 400)
+	messages[findWithAttr(messages, "id", id)].status = -1
+})
 }
 
 function findWithAttr(array, attr, value) {
@@ -43,12 +49,12 @@ let message = (username, date = new Date(), text, id, status) => {
 
 	var timestamp = `${day}/${mon}/${yer} at ${hour}:${min}`;
 var statusClass;
-	if(status == -1) {
-		statusClass = "failed";
-	} else if(status == 0) {
+	if(status == 0) {
 		statusClass = "sending";
 	} else if(status == 1) {
 		statusClass = "";
+	} else {
+		statusClass = "failed";
 	}
 
 	return `<div class="message glass" id="${id}">
@@ -141,6 +147,7 @@ function updateChat() {
 			element.css("", "");
 		}
 	}
+
 	
 }
 
