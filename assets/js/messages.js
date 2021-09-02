@@ -140,7 +140,7 @@ function updateChat() {
 	
 
 
-	$("#chat").html(htmlstring + "<br><br>");
+	$("#chat").html(htmlstring);
 	if(!$("#"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
 
 
