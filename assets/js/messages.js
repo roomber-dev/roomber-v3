@@ -140,11 +140,9 @@ function updateChat() {
 	
 
 
-	$("#chat").html(htmlstring + "<br><br>");
+	$("#chat").html(htmlstring);
 	if(!$("#"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
-
-
-	$("#"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
+		$("#"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
 	}
 
 	for (var i = 1; i <= msgCount; i++) {

@@ -35,7 +35,7 @@ body {
 
 #topbar {
     width: 100%;
-    height: 7%;
+    height: 10%;
     display: flex;
     align-items: center;
     background: rgba(0, 0, 0, 0.6);
@@ -60,9 +60,6 @@ body {
 
 #chat-area {
     flex: 1;
-    overflow: auto;
-    height: 93%;
-    flex-basis: 93%;
 }
 
 #chat, #channels {
@@ -77,24 +74,37 @@ body {
 }
 
 #chat {
-    flex: 1;
     flex-direction: column;
     overflow-y: auto;
     min-height: 0;
+    height: 100%;
     white-space: nowrap;
+    /*justify-content: flex-end;*/
 }
 
 #topbar-content {
-    margin: 10px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+#roomber-logo {
+    width: 40px;
+    margin: 4px;
+    object-fit: contain;
+}
+
+#other-stuff {
+    background: blue;
+    flex: 1;
 }
 
 #message-box {
     padding: 10px;
-    flex: none;
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 80.5%;
+    left: 20%;
     max-height: 7%;
     background: rgba(0, 0, 0, 0.6);
 }
@@ -225,6 +235,7 @@ body {
     font-size: 14px;
     margin: 10px 2px;
     opacity: 0.7;
+    justify-self: flex-end;
 }
 
 .failed {
