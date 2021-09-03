@@ -80,6 +80,7 @@ body {
     height: 100%;
     white-space: nowrap;
     /*justify-content: flex-end;*/
+    padding-bottom: 60px;
 }
 
 #topbar-content {
