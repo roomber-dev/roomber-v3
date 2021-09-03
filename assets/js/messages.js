@@ -1,6 +1,15 @@
 let messages = []
 let cldout = true;
 
+function getChat() {
+	$.post("messageArray.php?all", function(data) {
+		messages = JSON.parse(data);
+	})
+}
+
+getChat();
+updateChat();
+
 
 function sendMessage(username, date = new Date(), text, id) {
 	let json = {
@@ -150,10 +159,10 @@ function updateChat() {
 
 
 	$("#chat").html(htmlstring);
-	if(!$("#"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
+	if(!$("#msg"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
 
 
-	$("#"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
+	$("#msg"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
 	}
 
 	for (var i = 1; i <= msgCount; i++) {

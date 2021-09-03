@@ -1,7 +1,7 @@
 <?php
 
 
-include_once "dbconnect.php";
+include_once "include/dbconnect.php";
 
 $mysqli = new mysqli("localhost", $username, $password, $database);
 
