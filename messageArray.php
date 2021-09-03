@@ -18,6 +18,7 @@ if (isset($_GET['all'])) {
         $myObj->text = $row['text'];
         $myObj->username = $row['authorid'];
         $myObj->id = $row['id'];
+        $myObj->status = 1;
         array_push($messages, $myObj);
     }
     echo json_encode($messages);
@@ -34,6 +35,7 @@ if (isset($_GET['all'])) {
         $myObj->text = $row['text'];
         $myObj->username = $row['authorid'];
         $myObj->id = $row['id'];
+        $myObj->status = 1;
         echo json_encode($myObj);
     }
 }

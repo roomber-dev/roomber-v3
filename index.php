@@ -46,6 +46,7 @@ die();*/
     <title>Roomber v3</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <!-- dont put <script src="messages.js"> here the script must be loaded after the 
          html elements-->
     <!-- ok -->
