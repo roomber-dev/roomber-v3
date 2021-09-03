@@ -16,7 +16,6 @@ session_start();
 die();*/
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +46,6 @@ die();*/
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
-    <!-- dont put <script src="messages.js"> here the script must be loaded after the 
-         html elements-->
-    <!-- ok -->
 </head>
 
 <body>
@@ -67,21 +63,17 @@ die();*/
                     <li>#example1</li>
                     <li>#example2</li>
                     <li>#example3</li>
-
                 </ul>
             </div>
             <div id="chat-area">
                 <div id="chat">
                     <!-- initially empty -->
-
                 </div>
                 <div id="message-box" class="glass">
                     <form>
                         <div class="message-input">
-
                             <input name="usermsg" type="text" id="usermsg" placeholder="Message" autocomplete="off" />
                             <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-
                         </div>
                     </form>
                 </div>
@@ -90,7 +82,6 @@ die();*/
     </div>
 
     <script src="assets/js/messages.js"></script>
-
 </body>
 
 </html>

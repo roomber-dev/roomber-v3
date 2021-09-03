@@ -59,6 +59,7 @@ body {
 }
 
 #chat-area {
+    height: 88%;
     flex: 1;
 }
 
@@ -74,13 +75,10 @@ body {
 }
 
 #chat {
-    flex-direction: column;
-    overflow-y: auto;
     min-height: 0;
-    height: 100%;
-    white-space: nowrap;
-    /*justify-content: flex-end;*/
-    padding-bottom: 60px;
+    height: 93%;
+    flex-direction: column-reverse;
+    overflow-y: auto;
 }
 
 #topbar-content {
@@ -96,7 +94,6 @@ body {
 }
 
 #other-stuff {
-    background: blue;
     flex: 1;
 }
 

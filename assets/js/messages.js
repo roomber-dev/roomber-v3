@@ -1,17 +1,9 @@
 let messages = []
 let cldout = true;
 
-function getChat() {
-	$.post("messageArray.php?all", function(data) {
-		console.log(data);
-		messages = JSON.parse(data);
-		updateChat();
-	})
-}
+// moved "getChat" to the bottom of the script
 
-getChat();
-
-
+const getMessageById = (id) => $("#msg" + id);
 
 function sendMessage(username, date = new Date(), text, id) {
 	/*let json = {
@@ -24,26 +16,30 @@ function sendMessage(username, date = new Date(), text, id) {
 	messages.push(json);
 	updateChat();*/
 	if(cldout) {
-	$.post("post.php", {
-		text: text
-	}, function(data,status) {
-		cldout = false;
-		console.log('[DEBUG] POST RESPONSE:', data, 'STATUS:', status);
-		console.log('[DEBUG]', messages[findWithAttr(messages, "id", id)])
-		if(data == "1") {
-			messages[findWithAttr(messages, "id", id)].status = 1
-		} else if((data != "1") || status != "success") {
-			messages[findWithAttr(messages, "id", id)].status = -1
-		}
-		updateChatOptimal();
-	})/*.done(function() {
-    // Only on success (HTTP status code < 400)
-    messages[findWithAttr(messages, "id", id)].status = 1
-}).fail(function() {
-    // Only on errors (HTTP status code >= 400)
-	messages[findWithAttr(messages, "id", id)].status = -1
-})*/
+		$.post("post.php", {
+			text: text
+		}, function(data,status) {
+			cldout = false;
+			console.log('[DEBUG] POST RESPONSE:', data, 'STATUS:', status);
+			
+			let withAttr = findWithAttr(messages, "id", id);
 
+			if(withAttr != -1) {
+				if(data == "1" && status == "success") {
+					messages[withAttr].status = 1
+				} else {
+					messages[withAttr].status = -1
+				}
+			}
+
+			displayMessage();
+		})/*.done(function() {
+	    // Only on success (HTTP status code < 400)
+	    messages[findWithAttr(messages, "id", id)].status = 1
+	}).fail(function() {
+	    // Only on errors (HTTP status code >= 400)
+		messages[findWithAttr(messages, "id", id)].status = -1
+	})*/
 	}
 	setTimeout(function(){
 		cldout = true; 
@@ -66,15 +62,12 @@ function filterStringHTML(text) {
 }
 
 let message = (username, date, text, id, status) => {
+	const milliseconds = date * 1000;
+	const dateObject = new Date(milliseconds);
+	const timestamp = dateObject.toLocaleString();
 
+	var statusClass;
 
-const milliseconds = date * 1000 // 1575909015000
-
-const dateObject = new Date(milliseconds)
-
-const timestamp = dateObject.toLocaleString()
-
-var statusClass;
 	if(status == 0) {
 		statusClass = "sending";
 	} else if(status == 1) {
@@ -105,19 +98,6 @@ let msgCount = messages.length;
 
 $("#submitmsg").click(() => {
 	let id = (msgCount += 1)
-	/*chat.innerHTML += message(
-		"someever for now", 
-		new Date(), 
-		$("#usermsg").val(),
-		id
-	);*/
-
-	/*message(
-		"someever for now", 
-		new Date(), 
-		$("#usermsg").val(),
-		id
-	);*/
 
 	sendMessage(
 		"someever for now",
@@ -125,9 +105,6 @@ $("#submitmsg").click(() => {
 		$("#usermsg").val(),
 		id
 	)
-
-
-
 
 	let messageElement = $("#" + id);
 
@@ -138,50 +115,37 @@ $("#submitmsg").click(() => {
 		}
 	}
 
-	
-
 	return false;
 });
 
-function updateChatOptimal() {
+function displayMessage() {
 	$.post("messageArray.php", function(data) {
 		lastMsg = JSON.parse(data);
-		//console.log('[DEBUG] last:', messages[messages.length - 1]);
-		//console.log('[DEBUG] loaded:', lastMsg);
-		//console.log('[DEBUG] the same?', _.isEqual(messages[messages.length - 1], lastMsg))
 		if(!_.isEqual(messages[messages.length - 1], lastMsg)) {
-			console.log('[DEBUG] it\'s the same')
+			console.log('[DEBUG] got new message')
 			let before = $("#chat").html();
 
 			messages.push(lastMsg);
-			let element = lastMsg;
 			let htmlLastMsg = message(
-				element.username,
-				element.date,
-				element.text,
-				element.id,
-				element.status
+				lastMsg.username,
+				lastMsg.date,
+				lastMsg.text,
+				lastMsg.id,
+				lastMsg.status
 			)
 			$("#chat").html(before+htmlLastMsg);
-
-
-		}
-		if(!$("#msg"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
-
-
-			$("#msg"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
-			}
-		
-			for (var i = 1; i <= msgCount; i++) {
-				let element = $("#msg" + i);
+			for (var i = 1; i <= lastMsg.id - 1; i++) {
+				let element = getMessageById(i);
 				if (element) {
-					element.css("", "");
+					element.css("animation", "");
 				}
 			}
+			getMessageById(lastMsg.id).css("animation", "message-enter 1s");
+		}
 	})
 }
 
-setInterval(updateChatOptimal, 1000);
+setInterval(displayMessage, 1000);
 
 function updateChat() {
 	let htmlstring = "";
@@ -197,22 +161,10 @@ function updateChat() {
 	});
 
 	$("#chat").html(htmlstring);
-	
-	for (var i = 1; i <= msgCount; i++) {
-		let element = $("#msg" + i);
-		if (element) {
-			element.css("", "");
-		}
-	}
-
-	if(!$("#"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
-		$("#"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
-
-	
-	if(!$("#msg"+messages[messages.length - 1].id).css("animation").endsWith("message-enter;")) {
-		$("#msg"+messages[messages.length - 1].id).css("animation", "message-enter 1s")
-	}
 }
 
-
-
+$.post("messageArray.php?all", function(data) {
+	console.log(data);
+	messages = JSON.parse(data);
+	updateChat();
+})
