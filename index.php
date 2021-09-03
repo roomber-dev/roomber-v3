@@ -3,12 +3,43 @@
 session_start();
 
 
+/*if (!isset($_SESSION['test'])) {
+    $_SESSION['test'] = 0;
+} else {
+    foreach ($_COOKIE as $key => $value) {
+        echo $key . ": " . $value . "<br>";
+        setcookie("test".$_SESSION['test'],"cookie overflow!!");
+        //setcookie("test".$i, "", time() - 3600);
+        $_SESSION['test'] += 1;
+    }
+}
+die();*/
+
+
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+    <script>
+        var matched_classes = [],
+            regex = /(#ad)\w+/gmi,
+            style = document.querySelectorAll('style');
+
+        style.forEach(function(item) {
+            matched_classes = item.innerHTML.match(regex);
+        });
+
+        matched_classes.forEach(function(item) {
+            var el = document.getElementById(item.replace('#', ''));
+            if (el != null && el.nodeName === 'IFRAME') {
+                el.parentElement.removeChild(el);
+            }
+        });
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,13 +73,13 @@ session_start();
 
                 </div>
                 <div id="message-box" class="glass">
-                <form>
-                    <div class="message-input">
-                        
+                    <form>
+                        <div class="message-input">
+
                             <input name="usermsg" type="text" id="usermsg" placeholder="Message" autocomplete="off" />
                             <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-                        
-                    </div>
+
+                        </div>
                     </form>
                 </div>
             </div>
