@@ -39,6 +39,10 @@ let popup = (title, text) => {
     };
 };
 
+function alert(msg) {
+    popup("Alert", msg);
+}
+
 popup("Welcome to Roomber!", `Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
 Asperiores inventore molestias neque consequuntur alias 
 praesentium ipsa impedit accusamus exercitationem perferendis, 
