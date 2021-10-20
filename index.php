@@ -44,6 +44,7 @@ die();*/
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roomber v3</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup_style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 </head>
@@ -82,6 +83,7 @@ die();*/
     </div>
 
     <script src="assets/js/messages.js"></script>
+    <script src="assets/js/popup.js"></script>
 </body>
 
 </html>
